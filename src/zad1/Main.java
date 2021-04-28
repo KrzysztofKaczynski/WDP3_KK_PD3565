@@ -21,6 +21,7 @@ public class Main {
             System.out.println((int) (0.5 * (end + start) * (end - start + 1)));
         } catch (FileNotFoundException exc) {
             System.out.println("***");
+            System.exit(0);
         }
 
     }
