@@ -15,17 +15,14 @@ public class Main {
 
     public static void main(String[] args) {
         String fname = System.getProperty("user.home") + "/pakiety.txt";
+
         int rozmiarPakietu;
-
         int pojemnoscHd;
-
         int pojemnoscHdWBajtach;
-
+        int licznikPak = 1;
         int sumaPak = 0;
 
         ArrayList<Integer> rozmPakList = new ArrayList<>();
-
-        int licznikPak = 1;
 
         try {
             File file = new File(fname);
@@ -39,10 +36,8 @@ public class Main {
 
             pojemnoscHdWBajtach = pojemnoscHd * 1024 * 1024;
 
-
             if (rozmiarPakietu < 0 || pojemnoscHd < 0)
                 throw new Exception();
-
 
             while (sumaPak < pojemnoscHdWBajtach) {
                 if (licznikPak == 1) {
@@ -63,9 +58,7 @@ public class Main {
             sumaPak -= rozmPakList.get(rozmPakList.size() - 1);
             rozmPakList.remove(rozmPakList.size() - 1);
 
-
             System.out.println(rozmPakList.size());
-
 
             int i = 1;
             for (int list : rozmPakList) {
@@ -73,7 +66,6 @@ public class Main {
                 i++;
             }
 
-            // Wyświetlenie sumy pakietów
             System.out.println(sumaPak);
 
         } catch (Exception e) {

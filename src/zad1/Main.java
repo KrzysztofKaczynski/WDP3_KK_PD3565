@@ -17,8 +17,22 @@ public class Main {
         try {
             Scanner scan = new Scanner(new File(fname));
             int start = scan.nextInt(), end = scan.nextInt(), limit = scan.nextInt();
-            end = (int) Math.max(start, Math.min(end, Math.ceil(0.5 * (Math.sqrt(1 + 4 * start * (start - 1) + 8 * limit) - 1))));
-            System.out.println((int) (0.5 * (end + start) * (end - start + 1)));
+            if (end < start) {
+                System.out.println("***");
+            } else if (start == end) {
+                System.out.println(start);
+            } else {
+
+                int suma = 0;
+                for (int i = start; i <= end; ++i) {
+                    suma += i;
+                    if (suma >= limit) {
+                        break;
+                    }
+                }
+
+                System.out.println(suma);
+            }
         } catch (FileNotFoundException exc) {
             System.out.println("***");
             System.exit(0);

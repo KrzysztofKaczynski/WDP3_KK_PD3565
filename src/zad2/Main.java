@@ -15,39 +15,46 @@ public class Main {
 
     public static void main(String[] args) {
         String fname = System.getProperty("user.home") + "/tab.txt";
-        List<String> arrayList = new ArrayList<>();
+        List<Long> numbers = new ArrayList<>();
         FileReader reader;
+
         try {
             reader = new FileReader(fname);
             Scanner scanner = new Scanner(reader);
             while (scanner.hasNext()) {
                 String number = scanner.next();
                 try {
-                    Long d = Long.parseLong(number);
+                    long l = Long.parseLong(number);
+                    numbers.add(l);
                 } catch (NumberFormatException exception) {
                     System.out.println("***");
                     System.exit(0);
                 }
-                arrayList.add(number);
             }
         } catch (FileNotFoundException e) {
             System.out.println("***");
             System.exit(0);
         }
-        long[] tab = new long[arrayList.size()];
-        for (int i = 0; i < tab.length; i++) {
-            tab[i] = Long.parseLong(arrayList.get(i));
-            System.out.print(tab[i] + " ");
+
+        if (numbers.size() == 0) {
+            System.out.println("***");
+            System.exit(0);
+        }
+
+        for (Long number : numbers) {
+            System.out.print(number + " ");
         }
         System.out.println();
-        long max = tab[0];
-        for (int i = 1; i < tab.length; i++) {
-            if (max < tab[i])
-                max = tab[i];
+
+        Long max = numbers.get(0);
+        for (Long number : numbers) {
+            if (max < number)
+                max = number;
         }
         System.out.println(max);
-        for (int i = 0; i < tab.length; i++) {
-            if (max == tab[i])
+
+        for (int i = 0; i < numbers.size(); ++i) {
+            if (max.equals(numbers.get(i)))
                 System.out.print(i + " ");
         }
     }
