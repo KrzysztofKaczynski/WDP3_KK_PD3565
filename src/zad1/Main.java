@@ -33,7 +33,7 @@ public class Main {
 
                 System.out.println(suma);
             }
-        } catch (FileNotFoundException exc) {
+        } catch (Exception exc) {
             System.out.println("***");
             System.exit(0);
         }
